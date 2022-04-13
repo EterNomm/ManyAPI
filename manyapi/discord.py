@@ -7,13 +7,16 @@ class Discord:
 			self.wh = webhook(url)
 			
 		def message(self,
-			username:str,
-			message:str,
+			username:str=None,
+			message:str=None,
 			avatar_url:str=None
 			):
 				
 			self.wh.message(username, message, avatar_url)
-			
+		
+		def timestamp(self):
+					return self.wh.timestamp()
+					
 		def fields(self,
 			name:str,
 			value:str,
@@ -24,9 +27,10 @@ class Discord:
 				
 		def embed(self,
 			title:str, 
-			description:str,
+			description:str=None,
 			url:str=None,
 			color:int=None,
+			timestamp=None,
 			image:str=None,
 			author_name:str=None,
 			author_url:str=None,
@@ -42,6 +46,7 @@ class Discord:
 			description,
 			url,
 			color,
+			timestamp,
 			image,
 			author_name,
 			author_url,
