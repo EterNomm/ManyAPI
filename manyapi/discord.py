@@ -1,4 +1,4 @@
-from .DiscordApi.webhook import webhook
+from .DiscordAPI.webhook import webhook
 
 class Discord:
 	class webhook:
