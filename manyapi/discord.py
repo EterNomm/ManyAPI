@@ -18,7 +18,7 @@ class Discord:
 			value:str,
 			inline=False
 			):
-				return self.wh.fields(name, value, inline)
+			return self.wh.fields(name, value, inline)
 				
 		def embed(self,
 			title:str, 
@@ -33,7 +33,7 @@ class Discord:
 			thumbnail_url:str=None,
 			footer_text:str=None,
 			footer_icon:str=None
-		):
+		        ):
 			
 			self.wh.embed(
 			title,
