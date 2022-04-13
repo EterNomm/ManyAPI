@@ -1,4 +1,5 @@
 import requests
+from datetime import datetime
 
 class webhook:	
 	def __init__(self, url):
@@ -6,13 +7,16 @@ class webhook:
 		self.url = url
 		
 		
-	def message(self, username:str, message:str, avatar_url:str=None):
+	def message(self, username:str, message:str, avatar_url:str):
 		self.data = {
 			"username":username,
 			"content": message,
 			"avatar_url": avatar_url
 		}
 		
+	
+	def timestamp(self):
+		return str(datetime.utcnow())
 	
 	def fields(self,
 		name:str,
@@ -31,16 +35,17 @@ class webhook:
 	def embed(self,
 		title:str, 
 		description:str,
-		url:str=None,
-		color:int=None,
-		image:str=None,
-		author_name:str=None,
-		author_url:str=None,
-		author_icon:str=None,
-		fields:list=None,
-		thumbnail_url:str=None,
-		footer_text:str=None,
-		footer_icon:str=None
+		url:str,
+		color:int,
+		timestamp,
+		image:str,
+		author_name:str,
+		author_url:str,
+		author_icon:str,
+		fields,
+		thumbnail_url:str,
+		footer_text:str,
+		footer_icon:str
 		):
 
 		self.data["embeds"] = [
@@ -49,6 +54,7 @@ class webhook:
 			"description": description,
 			"url": url,
 			"color": color,
+			"timestamp": timestamp,
 			
 			"author": {
 				"name": author_name,
