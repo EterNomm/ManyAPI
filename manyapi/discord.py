@@ -18,6 +18,7 @@ class Discord:
 			value:str,
 			inline=False
 			):
+
 			return self.wh.fields(name, value, inline)
 				
 		def embed(self,
