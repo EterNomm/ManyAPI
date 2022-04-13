@@ -1,4 +1,5 @@
-from .discord import *
+from .discord import Discord
+from .anonfiles import Anonfiles
 
 __title__ = "Whitehat"
 __version__ = "1.0b1"
