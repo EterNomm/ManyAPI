@@ -37,7 +37,7 @@ class webhook:
 		author_name:str=None,
 		author_url:str=None,
 		author_icon:str=None,
-		fields=None,
+		fields:list=None,
 		thumbnail_url:str=None,
 		footer_text:str=None,
 		footer_icon:str=None
