@@ -1,7 +1,6 @@
 import requests
 
-class webhook:
-	
+class webhook:	
 	def __init__(self, url):
 		self.data = None
 		self.url = url
