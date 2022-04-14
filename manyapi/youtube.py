@@ -57,6 +57,7 @@ class Youtube:
 		for items in json["items"]:
 			definition = items["contentDetails"]["definition"]
 		
+		definition = str(definition)
 		return str.upper(definition)
 			
 	
@@ -107,3 +108,14 @@ class Youtube:
 		publish = publish.replace("T", " ")
 		publish = publish.replace("Z", "")
 		return publish
+		
+	def description(self):
+		key = self.key
+		video_id = self.video_id
+		res = requests.get(f"https://www.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id={video_id}&key={key}")
+		json = res.json()
+		
+		for items in json["items"]:
+			description = items["snippet"]["description"]
+			
+		return description
