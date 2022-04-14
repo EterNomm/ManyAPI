@@ -1,5 +1,7 @@
 from .discord import Discord
 from .anonfiles import Anonfiles
+from .randomword import Randomword
+from .youtube import Youtube
 
 __title__ = "Whitehat"
 __version__ = "1.0b1"
