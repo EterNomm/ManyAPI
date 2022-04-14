@@ -27,12 +27,12 @@ setup(
     description = 'All in one API wrapper.',
     long_description=long_description,
     long_description_content_type='text/markdown',
-    license='Apache License 2.0',
-    url='https://github.com/EterNomm/Whitehat',
+    license='GNU General Public License 3.0',
+    url='https://github.com/EterNomm/ManyAPI',
     project_urls={
-        "Source Code": "https://github.com/EterNomm/Whitehat",
+        "Source Code": "https://github.com/EterNomm/ManyAPI",
         "Discord": "https://discord.gg/qpT2AeYZRN",
-        "Issue tracker": "https://github.com/EterNomm/Whitehat/issues"
+        "Issue tracker": "https://github.com/EterNomm/ManyAPI/issues"
     },
     packages=find_packages(),
     include_package_data=True,
@@ -40,14 +40,15 @@ setup(
     keywords=["python", "api", "requests", "manyapi", "all in one api"],
     classifiers=[
         'Development Status :: 5 - Production/Stable',
-        'Intended Audience :: Science/Research',
+        'Intended Audience :: Developers',
         "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",
         "Programming Language :: Python :: 3.9",
         "Programming Language :: Python :: 3.10",
-        'License :: OSI Approved :: Apache Software License',
+        'License :: OSI Approved :: GNU General Public License v3 (GPLv3)',
         'Operating System :: Microsoft :: Windows',
         'Operating System :: MacOS',
-        'Operating System :: POSIX :: Linux'
+        'Operating System :: POSIX :: Linux',
+        'Operating System :: Android'
     ]
 )
