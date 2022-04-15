@@ -1,4 +1,4 @@
-name: Test script
+name: Publish to PyPI
 
 on: workflow_dispatch
 
@@ -16,7 +16,11 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install -r requirements.txt
-    - name: Testing script
+        pip install setuptools wheel twine
+    - name: Build and publish
+      env:
+        TWINE_USERNAME: ${{ secrets.PYPI_USERNAME }}
+        TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
       run: |
-        pyqtdeploy-build test.py
+        python setup.py sdist bdist_wheel
+        twine upload dist/*
