@@ -43,8 +43,8 @@ class Youtube:
 		for items in json["items"]:
 			duration = items["contentDetails"]["duration"]
 			
-		# [Simple version, Complicated version]
-		return [convert(duration, "s"), convert(duration, "m")]
+		# {Complicated version: Simple version}
+		return {convert(duration, "m"): convert(duration, "s")}
 		
 	def id(self):
 		return str(self.video_id)
@@ -104,7 +104,7 @@ class Youtube:
 		for items in json["items"]:
 			publish = items['snippet']['publishedAt']
 			
-		# Idk how to convert ISO 8601 format, so i tricked with this :)
+		# Idk how to convert RFC 3339 format, so i tricked with this :)
 		publish = str(publish)
 		publish = publish.replace("T", " ")
 		publish = publish.replace("Z", "")
