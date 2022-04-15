@@ -1,6 +1,7 @@
 # Reference :
 #	https://stackoverflow.com/a/48475541
 #	https://stackoverflow.com/a/32190892
+#	https://developers.google.com/youtube/v3/docs/search/list
 
 
 import requests
@@ -119,3 +120,34 @@ class Youtube:
 			description = items["snippet"]["description"]
 			
 		return description
+		
+	def search(self, 
+		query:str, 
+		max_results:int=10,
+		type:str="video",
+		sort_by:str="relevance",
+		video_definition:str="any",
+		safesearch_type:str="moderate"
+		):
+			
+		if sort_by == "view":
+			sort_by = "viewCount"
+		elif sort_by == "video":
+			sort_by = "viewCount"
+		
+		key = self.key
+		query = query.replace(" ", "%20")
+		
+		results = []
+		req = requests.get(f"https://youtube.googleapis.com/youtube/v3/search?part=snippet&safeSearch={safesearch_type}&order={sort_by}&q=v{query}&type={type}&videoDefinition={video_definition}&maxResults={max_results}&key={key}")
+		parse = req.json()
+		
+		for items in parse["items"]:
+			title = items["snippet"]["title"]
+			video_id = items["id"]["videoId"]
+			video_link = "https://youtube.com/watch?v="+video_id
+			
+			res = {title: video_link}
+			results.append(res)
+			
+		return results
