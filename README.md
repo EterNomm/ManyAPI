@@ -1,8 +1,9 @@
 # ManyAPI
 All in one API wrapper written in Python.
 
-## API list
-Check [api_list.md](https://github.com/EterNomm/ManyAPI/blob/main/api_list.md)
+## API list & Examples
+- API List : [api_list.md](https://github.com/EterNomm/ManyAPI/blob/main/api_list.md)
+- Examples : [examples](https://github.com/EterNomm/ManyAPI/tree/main/examples) directory
 
 ## Contribution
 Can I add more API wrapper/fix some code? **Totally Allowed :)**
