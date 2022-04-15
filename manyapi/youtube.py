@@ -43,8 +43,12 @@ class Youtube:
 		for items in json["items"]:
 			duration = items["contentDetails"]["duration"]
 			
-		# {Complicated version: Simple version}
-		return {convert(duration, "m"): convert(duration, "s")}
+		duration = {
+			"actual": convert(duration, "m"),
+			"simple": convert(duration)
+			}
+			
+		return duration
 		
 	def id(self):
 		return str(self.video_id)
@@ -147,7 +151,10 @@ class Youtube:
 			video_id = items["id"]["videoId"]
 			video_link = "https://youtube.com/watch?v="+video_id
 			
-			res = {title: video_link}
+			res = {
+				"title": title,
+				"link": video_link
+				}
 			results.append(res)
 			
 		return results
