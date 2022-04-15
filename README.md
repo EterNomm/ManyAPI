@@ -1,5 +1,5 @@
 # ManyAPI
-All in one API wrapper written in Python.
+All in one, Cross-platform, Simple but powerful API wrapper written in Python.
 
 ## API list & Examples
 - API List : [api_list.md](https://github.com/EterNomm/ManyAPI/blob/main/api_list.md)
@@ -13,7 +13,7 @@ Copyright 2022-present EterNomm
 ```
 GNU General Public License 3.0
 
-A permissive license whose main conditions require preservation of copyright and license notices.
-Contributors provide an express grant of patent rights.
-Licensed works, modifications, and larger works may be distributed under different terms and without source code.
+Permissions of this strong copyleft license are conditioned on making available complete source code of licensed works and modifications,
+which include larger works using a licensed work, under the same license. 
+Copyright and license notices must be preserved. Contributors provide an express grant of patent rights.
 ```
