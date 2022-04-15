@@ -1,6 +1,6 @@
 import manyapi
 
-yt = manyapi.Youtube("youtube video link", "Youtube API v3")
+yt = manyapi.Youtube("youtube video link", "Youtube API v3 key")
 
 # Get video details
 title = yt.title()
