@@ -7,9 +7,9 @@ class Randomword:
 		base_url = f"https://random-word-api.herokuapp.com/word?number={number}"
 		self.response = requests.get(base_url)
 		
-	def text(self):
+	def list(self):
 		json = self.response.json()
 		return '\n'.join(str(x) for x in json)
 		
-	def list(self):
+	def json(self):
 		return self.response.json()
