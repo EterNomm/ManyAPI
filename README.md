@@ -1,3 +1,7 @@
+[![Downloads](https://static.pepy.tech/personalized-badge/manyapi?period=total&units=international_system&left_color=grey&right_color=green&left_text=Downloads)](https://pepy.tech/project/manyapi)
+![PyPI](https://img.shields.io/pypi/v/manyapi?label=PyPI%20Version&logo=pypi)
+![PyPI - Python Version](https://img.shields.io/pypi/pyversions/manyapi?label=Python%20Version&logo=python)
+
 # ManyAPI
 All in one, Cross-platform, Simple but powerful API wrapper written in Python.
 
