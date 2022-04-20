@@ -1,5 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
+from .exceptions import *
 
 
 class Googlesearch:
@@ -24,7 +25,10 @@ class Googlesearch:
 		results_total+=2 # If "results_total" is 15 then the final results is only 13
 		url = f"https://www.google.com/search?q={query}&num={results_total}"
 		
-		req = requests.get(url)
+		try:
+			req = requests.get(url)
+		except requests.RequestException as error:
+			raise RequestsErrors(error)
 		bs4 = BeautifulSoup(req.content, "html.parser")
 		bs4_results = bs4.find_all("a")
 		
@@ -32,9 +36,9 @@ class Googlesearch:
 		for link in bs4_results:
 			link_href = link.get("href")
 			if "url?q=" in link_href and not "webcache" in link_href:
-			    find_h3 = link.find_all('h3')
-			    if len(find_h3) > 0:
-			    	url = link.get('href').split("?q=")[1].split("&sa=U")[0]
-			    	title = find_h3[0].getText()
-			    	
-			    	yield title, url
+				find_h3 = link.find_all('h3')
+				if len(find_h3) > 0:
+					url = link.get('href').split("?q=")[1].split("&sa=U")[0]
+					title = find_h3[0].getText()
+					
+					yield title, url

@@ -6,6 +6,7 @@
 
 import requests
 from .YoutubeAPI.converter import convert
+from .exceptions import *
 
 class Youtube:
 	def __init__(self, url:str, api_key:str):
@@ -18,26 +19,38 @@ class Youtube:
 	def title(self):
 		# Doesn't need API key
 		url = self.video_url
-		res = requests.get(f"https://noembed.com/embed?url={url}")
-		return str(res.json()["title"])
+		try:
+			res = requests.get(f"https://noembed.com/embed?url={url}")
+			return str(res.json()["title"])
+		except requests.RequestException as error:
+			raise RequestsErrors(error)
 		
 	def author(self):
 		# Doesn't need API key
 		url = self.video_url
-		res = requests.get(f"https://noembed.com/embed?url={url}")
-		# [Author name, Author channel url]
-		return [res.json()["author_name"], res.json()["author_url"]]
+		try:
+			res = requests.get(f"https://noembed.com/embed?url={url}")
+			# [Author name, Author channel url]
+			return [res.json()["author_name"], res.json()["author_url"]]
+		except requests.RequestException as error:
+			raise RequestsErrors(error)
 		
 	def thumbnail(self):
 		# Doesn't need API key
 		url = self.video_url
-		res = requests.get(f"https://noembed.com/embed?url={url}")
-		return str(res.json()["thumbnail_url"])
+		try:
+			res = requests.get(f"https://noembed.com/embed?url={url}")
+			return str(res.json()["thumbnail_url"])
+		except requests.RequestException as error:
+			raise RequestsErrors(error)
 		
 	def duration(self):
 		key = self.key
 		video_id = self.video_id
-		res = requests.get(f"https://www.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id={video_id}&key={key}")
+		try:
+			res = requests.get(f"https://www.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id={video_id}&key={key}")
+		except requests.RequestException as error:
+			raise RequestsErrors(error)
 		json = res.json()
 		
 		for items in json["items"]:
@@ -56,7 +69,10 @@ class Youtube:
 	def definition(self):
 		key = self.key
 		video_id = self.video_id
-		res = requests.get(f"https://www.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id={video_id}&key={key}")
+		try:
+			res = requests.get(f"https://www.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id={video_id}&key={key}")
+		except requests.RequestException as error:
+			raise RequestsErrors(error)
 		json = res.json()
 	
 		for items in json["items"]:
@@ -69,7 +85,10 @@ class Youtube:
 	def likes(self):
 		key = self.key
 		video_id = self.video_id
-		res = requests.get(f"https://www.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id={video_id}&key={key}")
+		try:
+			res = requests.get(f"https://www.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id={video_id}&key={key}")
+		except requests.RequestException as error:
+			raise RequestsErrors(error)
 		json = res.json()
 		
 		for items in json["items"]:
@@ -80,7 +99,10 @@ class Youtube:
 	def views(self):
 		key = self.key
 		video_id = self.video_id
-		res = requests.get(f"https://www.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id={video_id}&key={key}")
+		try:
+			res = requests.get(f"https://www.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id={video_id}&key={key}")
+		except requests.RequestException as error:
+			raise RequestsErrors(error)
 		json = res.json()
 		
 		for items in json["items"]:
@@ -91,7 +113,10 @@ class Youtube:
 	def comments(self):
 		key = self.key
 		video_id = self.video_id
-		res = requests.get(f"https://www.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id={video_id}&key={key}")
+		try:
+			res = requests.get(f"https://www.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id={video_id}&key={key}")
+		except requests.RequestException as error:
+			raise RequestsErrors(error)
 		json = res.json()
 		
 		for items in json["items"]:
@@ -102,7 +127,10 @@ class Youtube:
 	def upload_date(self):
 		key = self.key
 		video_id = self.video_id
-		res = requests.get(f"https://www.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id={video_id}&key={key}")
+		try:
+			res = requests.get(f"https://www.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id={video_id}&key={key}")
+		except requests.RequestException as error:
+			raise RequestsErrors(error)
 		json = res.json()
 		
 		for items in json["items"]:
@@ -117,7 +145,10 @@ class Youtube:
 	def description(self):
 		key = self.key
 		video_id = self.video_id
-		res = requests.get(f"https://www.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id={video_id}&key={key}")
+		try:
+			res = requests.get(f"https://www.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id={video_id}&key={key}")
+		except requests.RequestException as error:
+			raise RequestsErrors(error)
 		json = res.json()
 		
 		for items in json["items"]:
@@ -143,7 +174,10 @@ class Youtube:
 		query = query.replace(" ", "%20")
 		
 		results = []
-		req = requests.get(f"https://youtube.googleapis.com/youtube/v3/search?part=snippet&safeSearch={safesearch_type}&order={sort_by}&q=v{query}&type={type}&videoDefinition={video_definition}&maxResults={max_results}&key={key}")
+		try:
+			req = requests.get(f"https://youtube.googleapis.com/youtube/v3/search?part=snippet&safeSearch={safesearch_type}&order={sort_by}&q=v{query}&type={type}&videoDefinition={video_definition}&maxResults={max_results}&key={key}")
+		except requests.RequestException as error:
+			raise RequestsErrors(error)
 		parse = req.json()
 		
 		for items in parse["items"]:

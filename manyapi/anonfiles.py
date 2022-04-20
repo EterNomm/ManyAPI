@@ -1,4 +1,5 @@
 import requests
+from .exceptions import *
 
 class Anonfiles:
 	class upload:
@@ -6,8 +7,11 @@ class Anonfiles:
 			payload = {
 				"file": (file, open(file, "rb"))
 			}
-		
-			self.res = requests.post("https://api.anonfiles.com/upload", payload=payload)
+
+			try:
+				self.res = requests.post("https://api.anonfiles.com/upload", payload=payload)
+			except requests.RequestException as error:
+				raise RequestsErrors(error)
 		
 		def json(self):
 			return self.res.json()
@@ -27,7 +31,10 @@ class Anonfiles:
 	
 	class info:
 		def __init__(self, file_id:str):
-			res = requests.get(f"https://api.anonfiles.com/v2/file/{file_id}/info")
+			try:
+				res = requests.get(f"https://api.anonfiles.com/v2/file/{file_id}/info")
+			except requests.RequestException as error:
+				raise RequestsErrors(error)
 			self.res_json = res.json()
 			
 		def json(self):

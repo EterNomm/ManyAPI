@@ -1,5 +1,6 @@
 import requests
 from datetime import datetime
+from ..exceptions import *
 
 class webhook:	
 	def __init__(self, url):
@@ -84,7 +85,7 @@ class webhook:
 		response = requests.post(self.url, json=self.data)
 		try:
 			response.raise_for_status()
-		except requests.exceptions.HTTPError as error:
-			raise RuntimeError(error)
+		except requests.RequestException as error:
+			raise RequestsErrors(error)
 		else:
 			return "Payload successfully delivered."

@@ -1,4 +1,5 @@
 import requests
+from ..exceptions import *
 
 class send_message:
 	def __init__(self, token:str, channel_id:int, api_version:int):
@@ -20,7 +21,7 @@ class send_message:
 		response = requests.post(self.url, data=payload, headers=headers)
 		try:
 			response.raise_for_status()
-		except requests.exceptions.HTTPError as error:
-			raise RuntimeError(error)
+		except requests.RequestException as error:
+			raise RequestsErrors(error)
 		else:
 			return "Payload successfully delivered."
