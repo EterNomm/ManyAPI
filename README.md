@@ -1,3 +1,8 @@
+> **This project has been archived, we don't know when it will be continued.**
+> **If you have any questions, you are very welcome to ask on our Discord server.**
+> **[Reasons and more detailed explanations](https://gist.github.com/LyQuid12/281d0db00d672695d9ad01e62a28f591).**
+<br>
+
 [![Downloads](https://static.pepy.tech/personalized-badge/manyapi?period=total&units=international_system&left_color=grey&right_color=green&left_text=Downloads)](https://pepy.tech/project/manyapi)
 ![PyPI](https://img.shields.io/pypi/v/manyapi?label=PyPI%20Version&logo=pypi)
 ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/manyapi?label=Python%20Version&logo=python)
